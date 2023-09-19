@@ -522,61 +522,61 @@ def packet_processor(p):
             state = light_parse(p['value'])
             logtxt='[MQTT publish|light] room[{}] data[{}]'.format(p['src_room'], state)
             mqttc.publish("kocom/{}/light/state".format(p['src_room']), json.dumps(state))
- elif p['src'] == 'fan' and p['cmd'] == 'state':elif p['src'] == 'fan' 및 p['cmd'] == 'state':
-            state = fan_parse(p['value'])상태 = fan_fan(p['value'])상태 = fan_fan부채_부채((p[['value''가치']]))상태 = fan_fan부채_부채((p[['value'가치'''])
-            logtxt='logtxt='[MQlogtxt='[MQlogtxt='[MQ]TT publish|fan] data[{}]'.format(state)[MQ]TT publish|fan] data[{}]'format(상태)TT 게시|fan] data[{}]' 형식(상태)TT 게시|fan] data[{}]' 형식(상태)
-            mqttc.publish("kocom/livingroom/fan/state", json.dumps(state))mqtc.jpkocom/거실/팬/상태", json.jpon(상태))mqtc.jpkocom/거실/선풍기/상태", json.jpn(상태)mqtc.jpkocom/선풍기/선풍기/상태", json.jpon(상태)
- elif p['src'] == 'gas':elif p['src'] == 'gas':elif p['src'] == 'gas':elif p['src'] == 'gas':
-            state = {'state': p['cmd']}상태 = {'state': p['cmd']}상태 = {'state': p['cmd']}: 오류 = {'state': p['cmd']}
-            logtxt='logtxt='[MQlogtxt='[MQlogtxt='[MQ]TT publish|gas] data[{}]'.format(state)[MQ]TT publish|gas] data[{}]'format(상태)TT 게시|gas] data[{}]' 형식(상태)TT 게시|gas] data[{}]' 형식(상태)
-            mqttc.publish("kocom/livingroom/gas/state", json.dumps(state))mqtc.jpkocom/거실/가스/상태", json.jpon(상태))mqtc.jpkocom/거실/가스/상태", json.jpon(상태)mqtc.jpkocom/gas/gas/gas/gas/gas), json.jpon(상태)
- elif p['type'] == 'send' and p['dest'] == 'elevator':elif p['type'] == 'send' and p['dest'] == 'signal':elif p['type'] == 'send' and p['dest'] == 'send':elif p['type'] == 'send' and p['dest'] == 'send':
-        # floor = int(p['value'][2:4],16)  ---- 삭제# 바닥 = int(p['value'][2:4],16) ---- 삭제# floor = int(p['value'][2:4],16) ---- 삭제# 바닥 = int(p['value'][2:4],16) ---- 삭제
-        rs485_floor = int인트((config.get얻다(('Elevator''엘리베이터','rs485_floor''rs485_floor', fallback=0))))rs485_floor = int인트((config.get얻다(('엘리베이터''엘리베이터','rs485_floor''rs485_floor', 폴백=0))
- if rs485_floor != 0 :if rs485_floor != 0 :if rs485_floor != 0 : if rs485_floor != 0 :
- if p['value'] == '0300000000000000' :if p['value'] == '03000000000000' :if p['value'] == '03000000000000' :if p['value'] == '030000000000' :
-             # 도착 패킷 수신 시 off상태로 변경 [ AA 55 30 BC 00 44 00 01 00 01 03 00 00 00 00 00 00 00 35 0D 0D ]# 도착 패킷 수신 시 off상태로 변경 [ AA 55 30 BC 00 44 00 01 00 01 03 00 00 00 00 00 00 00 35 0D 0D ]# 도착 패킷 수신 시 off상태로 변경 [ AA 55 30 BC 00 44 00 01 00 01 03 00 00 00 00 00 00 00 35 0D 0D ]# 도착 패킷 수신 시 off상태로 변경 [ AA 55 30 BC 00 44 00 01 00 01 03 00 00 00 00 00 00 00 35 0D 0D ]
-                   # state = {'floor': floor}  ---- 삭제# 상태 = {'floor':floor} ---- 삭제# 상태 = {'floor':floor} ---- 삭제# 상태 = {'floor':floor} ---- 삭제
-                   state = {{'state''주': 'off''오프'}}상태 = {{'state''주': 'off''오프'}}
-                   # if rs485_floor == floor:  ---- 삭제# if rs485_floor ==floor: ---- 삭제# if rs485_floor ==floor : ---- 삭제# if rs485_floor ==floor : ---- 삭제
-                        # state['state'] = 'off'  ---- 삭제# state['state'] = 'off' ---- 삭제# state['state'] = 'off' ---- 삭제# state['state'] = 'off' ---- 삭제
- else또 다른:기타:
-            state = {'state': 'off'}상태 = {'state': 'off'}상태 = {'state': 'off'}fault = {'state': 'off'}
-        logtxt='logtxt='[MQlogtxt='[MQlogtxt='[MQ]TT publish|elevator] data[{}]'.format(state)[MQ]TT publish|elevator] data[{}]'format(상태)TT 게시|엘리베이터] 데이터[{}]' 형식(상태)TT 게시|엘리베이터] 데이터[{}]' 형식(상태)
-        mqttc.publish("kocom/myhome/elevator/state", json.dumps(state))mqtc.mqtc.skocom/내 집/집/상태", json.json(상태))mqtc.mqtc.skocom/myhome/school/state", json.skocom(state))mqtc.skocom/school/school/school/school/school", json.json(school)
-        # aa5530bc0044000100010300000000000000350d0d# aa5530bc0044000100010300000000350d# aa5530bc0044000100010300000000350d0d# aa5530bc004400010001030000350d
+        elif p['src'] == 'fan' and p['cmd'] == 'state':
+            state = fan_parse(p['value'])
+            logtxt='[MQTT publish|fan] data[{}]'.format(state)
+            mqttc.publish("kocom/livingroom/fan/state", json.dumps(state))
+        elif p['src'] == 'gas':
+            state = {'state': p['cmd']}
+            logtxt='[MQTT publish|gas] data[{}]'.format(state)
+            mqttc.publish("kocom/livingroom/gas/state", json.dumps(state))
+    elif p['type'] == 'send' and p['dest'] == 'elevator':
+        # floor = int(p['value'][2:4],16)  ---- 삭제
+        rs485_floor = int(config.get('Elevator','rs485_floor', fallback=0))
+        if rs485_floor != 0 :
+             if p['value'] == '0300000000000000' :
+             # 도착 패킷 수신 시 off상태로 변경 [ AA 55 30 BC 00 44 00 01 00 01 03 00 00 00 00 00 00 00 35 0D 0D ]
+                   # state = {'floor': floor}  ---- 삭제
+                   state = {'state': 'off'}
+                   # if rs485_floor == floor:  ---- 삭제
+                        # state['state'] = 'off'  ---- 삭제
+        else:
+            state = {'state': 'off'}
+        logtxt='[MQTT publish|elevator] data[{}]'.format(state)
+        mqttc.publish("kocom/myhome/elevator/state", json.dumps(state))
+        # aa5530bc0044000100010300000000000000350d0d
 
- if한다면 logtxt != """" and그리고. config.get얻다(('Log''로그', 'show_mqtt_publish''show_mqtt_graphics')) == 'True''참':logtxt != """" 및 config.get('Log', 'show_mqtt_false') == 'True'인 경우:및 config.get('Log', 'show_mqtt_false') == 'True' 경우:
-        logging.info(logtxt)logging.info (logtxt)logging.info (logtxt) logging.info (logtxt)
+    if logtxt != "" and config.get('Log', 'show_mqtt_publish') == 'True':
+        logging.info(logtxt)
 
 
-#===== publish MQTT Devices Discovery =====#===== MQTT Devices Discovery ===== 게시#===== MQTT Devices Discovery 발행 ===== #===== MQTT Devices Discovery ===== 게시
+#===== publish MQTT Devices Discovery =====
 
-def discovery():def discovery():def discovery:def discovery:
-    dev_list = [x.strip() for x in config.get('Device','enabled').config.get('Device', 'enabled')의 x에 대해 dev_list = [x.strip]입니다.split(',')]분할하다,')]dev_list = [config.get('Device', 'enabled')의 x에 대해 x.strip('x.strip('Device', 'enabled') x('Device', 'enabled') dev_list = [x.strip]syp('enabled'),]syp(').
- for t in dev_list:fort in dev_list:fort in dev_list:fort in dev_list:
-        dev = t.split('_')dev = t.tv_')dev = t.dev_''dev = t.tv _')
-        sub = ''sub = 'sub = '''sub ='''
- if len(dev) > 1:len(dev) > 1인 경우:if len(dev) > 1:len(dev) > 1π 경우:
-            sub = dev[1]sub = dev[1]하위 = dev[1]하위 = dev[1]
- publish_discovery(dev[0], sub)publish_publish(dev[0], sub)publish_publish_publish(dev[0], sub)publish_publish_publish(dev[0], sub)publish_graphics(dev[0], sub)publish_graphics(dev[0], sub)publish_graphics(dev[0], sub)publish_graphics(dev[0], sub)
-    publish_discovery출판_출판(('query''미친'))publish_publish_publish('query출판')publish_publish_publish_publish_publish('query미친publish('query출판'))('publishpublish출판')
+def discovery():
+    dev_list = [x.strip() for x in config.get('Device','enabled').split(',')]
+    for t in dev_list:
+        dev = t.split('_')
+        sub = ''
+        if len(dev) > 1:
+            sub = dev[1]
+        publish_discovery(dev[0], sub)
+    publish_discovery('query')
 
-#https://www.home-assistant.io/docs/mqtt/discovery/#https://www.home-assistant.io/docs/mqtt/discovery/#https://www.home-assistant.io/docs/mqtt/discovery/ #https://www.home-assistant.io/docs/mqtt/discovery/
-#<discovery_prefix>/<component>/<object_id>/config#<component_id>/<component>/<object_id>/config#<component_id>/<component>/<object_id>/config#<component_id>/<component>/<object_id>/config
-def publish_discovery(dev, sub=''):def publish_dev(dev, sub="):def publish_dev(dev, sub="):def publish_dev(dev, sub="):def publish_dev(dev, sub="):def publish_dev(dev, sub="):def publish_dev(dev, sub="):def publish_dev(dev, sub="):
- if dev == 'fan':if dev == 'fan': if dev == 'fan': if dev == 'fan':if dev == 'fan': if dev == 'fan': if dev == 'fan': if dev == 'fan':
-        topic = 'homeassistant/fan/kocom_wallpad_fan/config'항목 = 'homeassistant/fan/kocom_wallpad_fan/config'        주제 = 'homeassistant/fan/kocom_wallpad_fan/config' 주제 = 'homeassistant/fan/kocom_wallpad_fan/config'
-        payload = {페이로드 = {        payload = {payload = {
- 'name': 'Kocom Wallpad Fan','name': '코콤 월패드 팬', 'name': 'Kocom Wallpad Fan', 'name': '코콤월패드팬',팬월패드',
- 'cmd_t': 'kocom/livingroom/fan/command','cmd_t': '꼬콤/거실/선풍기/명령', 'cmd_t': '꼬콤/거실/선풍기/명령', 'cmd_t': '꼬콤/거실/선풍기/명령',
- 'stat_t': 'kocom/livingroom/fan/state','stat_t': 'kocom/거실/팬/상태', 'stat_t': 'kocom/거실/팬/주', 'stat_t': 'kocom/거실/팬/주',
- 'stat_val_tpl': '{{ value_json.state }}','stat_val_tpl': '{value_json.state }}', 'stat_val_tpl': '{value_json.state }}', 'stat_val_tpl': '{value_json.state }}',
- 'pr_mode_stat_t': 'kocom/livingroom/fan/state','pr_mode_stat_t': 'kocom/거실/팬/상태', 'pr_mode_stat_t': 'kocom/거실/팬/상태', 'pr_mode_stat_t': 'kocom/거실/팬/팬/상태',
- 'pr_mode_val_tpl': '{{ value_json.preset }}','pr_mode_val_tpl': '{value_json. 'pr_mode_val_tpl': '{value_json.tpl}', 'pr_mode_val_tpl': '{value_json.tpl'입니다.fl}}',fl}','
- 'pr_mode_cmd_t': 'kocom/livingroom/fan/set_preset_mode/command','pr_mode_cmd_t': 'kocom/거실/선풍기/set_mode_mode/명령어', 'pr_mode_cmd_t': 'kocom/거실/선풍기/set_mode_mode/명령어', 'pr_mode_cmd_t': 'kocom/set/set_mode_mode_mode/set',
- 'pr_mode_cmd_tpl': '{{ value }}','pr_mode_cmd_tpl': '{{value}}', 'pr_mode_cmd_tpl': '{{value}}', 'pr_mode_cmd_tpl': '{value}},
- 'pr_modes': ['Off', 'Low', 'Medium', 'High'],'pr_modes': ['Off', 'Low', 'Medium', 'High'], 'pr_modes': ['Off', 'Low', 'Medium', 'High'], 'pr_modes': ['Off', 'Low', 'Medium', 'High'],
+#https://www.home-assistant.io/docs/mqtt/discovery/
+#<discovery_prefix>/<component>/<object_id>/config
+def publish_discovery(dev, sub=''):
+    if dev == 'fan':
+        topic = 'homeassistant/fan/kocom_wallpad_fan/config'
+        payload = {
+            'name': 'Kocom Wallpad Fan',
+            'cmd_t': 'kocom/livingroom/fan/command',
+            'stat_t': 'kocom/livingroom/fan/state',
+            'stat_val_tpl': '{{ value_json.state }}',
+            'pr_mode_stat_t': 'kocom/livingroom/fan/state',
+            'pr_mode_val_tpl': '{{ value_json.preset }}',
+            'pr_mode_cmd_t': 'kocom/livingroom/fan/set_preset_mode/command',
+            'pr_mode_cmd_tpl': '{{ value }}',
+            'pr_modes': ['Off', 'Low', 'Medium', 'High'],
             'pl_on': 'on',
             'pl_off': 'off',
             'qos': 0,
@@ -587,15 +587,15 @@ def publish_discovery(dev, sub=''):def publish_dev(dev, sub="):def publish_dev(d
                 'mf': 'KOCOM',
                 'mdl': '스마트 월패드',
                 'sw': SW_VERSION
-            }}
-        }}
+            }
+        }
         logtxt='[MQTT Discovery|{}] data[{}]'.format(dev, topic)
-        mqttc.publish(topic, json.dumps(payload))mqttc.publish(topic, json.dumps(payload))
+        mqttc.publish(topic, json.dumps(payload))
         if logtxt != "" and config.get('Log', 'show_mqtt_publish') == 'True':
-            logging.info(logtxt)logging.info (logtxt)
+            logging.info(logtxt)
     elif dev == 'gas':
         topic = 'homeassistant/switch/kocom_wallpad_gas/config'
-        payload = {페이로드 = {
+        payload = {
             'name': 'Kocom Wallpad Gas',
             'cmd_t': 'kocom/livingroom/gas/command',
             'stat_t': 'kocom/livingroom/gas/state',
